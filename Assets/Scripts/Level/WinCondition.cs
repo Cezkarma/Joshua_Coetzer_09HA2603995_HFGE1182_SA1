@@ -8,10 +8,25 @@ public class WinCondition : MonoBehaviour
     
     public string sceneToLoadName;
 
+    public bool deleteSaveOnComplete;
+    private bool isLoading;
+
     private void Update()
     {
-        if (sceneEnemy  == null)
+        if (!isLoading && sceneEnemy == null)
         {
+            isLoading = true;
+
+            if (deleteSaveOnComplete)
+            {
+                SaveSystem.DeleteSave();
+            }
+            else if (GameManager.Instance != null)
+            {
+                GameManager.Instance.SavePlayer();
+                GameManager.carryOverOnStart = true;
+            }
+
             SceneManager.LoadScene(sceneToLoadName);
         }
     

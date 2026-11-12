@@ -46,6 +46,22 @@ public static class SaveSystem
         stream.Close();
     }
 
+    public static void DeleteSave()
+    {
+        string playerPath = Application.persistentDataPath + "/PlayerData.dat";
+        string enemyPath = Application.persistentDataPath + "/EnemyData.dat";
+
+        if (File.Exists(playerPath))
+        {
+            File.Delete(playerPath);
+        }
+
+        if (File.Exists(enemyPath))
+        {
+            File.Delete(enemyPath);
+        }
+    }
+
     public static PlayerData LoadPlayer()
     {
         string path = Application.persistentDataPath + "/PlayerData.dat";

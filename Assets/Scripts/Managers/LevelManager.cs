@@ -30,7 +30,18 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
+        GameManager.loadSaveOnStart = true;
         LoadSelectScene(data.sceneName);
+    }
+
+    public void SaveAndLoadScene(string sceneToLoad)
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.SaveGame();
+        }
+
+        LoadSelectScene(sceneToLoad);
     }
 
     public void QuitGame()
