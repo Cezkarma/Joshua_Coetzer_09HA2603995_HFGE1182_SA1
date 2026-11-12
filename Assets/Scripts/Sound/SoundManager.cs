@@ -5,6 +5,7 @@ using UnityEngine.Audio;
 public class SoundManager : MonoBehaviour
 {
     public Sound[] soundList;
+    public string[] playOnStart; // e.g. "Music", "Ambience" - played when the scene starts
     public static SoundManager Instance;
 
     private void Awake()
@@ -25,6 +26,14 @@ public class SoundManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+        }
+    }
+
+    private void Start()
+    {
+        foreach (string soundName in playOnStart)
+        {
+            Play(soundName);
         }
     }
 
