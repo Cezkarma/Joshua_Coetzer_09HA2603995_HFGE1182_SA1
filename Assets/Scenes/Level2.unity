@@ -1318,6 +1318,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1614774026049385282, guid: bf86c3635e98fa848a67deb378541182, type: 3}
+      propertyPath: currentAmmo
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7429537594262920769, guid: bf86c3635e98fa848a67deb378541182, type: 3}
       propertyPath: m_Name
       value: Player
