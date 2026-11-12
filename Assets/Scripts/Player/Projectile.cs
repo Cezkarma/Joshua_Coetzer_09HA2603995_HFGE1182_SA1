@@ -6,8 +6,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float damage;
 
     [Header("HIT FEEDBACK")]
-    [SerializeField] private GameObject hitEffect;          // VFX_Hit
-    [SerializeField] private string hitSound = "ArrowHit";  // SoundManager name
+    [SerializeField] private GameObject hitEffect;
+    [SerializeField] private string hitSound = "ArrowHit";
 
     private void OnCollisionEnter(Collision col)
     {
@@ -40,7 +40,6 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    // Spawns the hit particles where the arrow landed and plays the impact sound
     private void PlayHitFeedback(Collision col)
     {
         if (hitEffect != null)

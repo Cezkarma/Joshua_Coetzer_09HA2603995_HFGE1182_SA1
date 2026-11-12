@@ -97,7 +97,6 @@ public class ShootHandler : MonoBehaviour
         isCharging = true;
         animationHandler.OnBeginShoot(); //Animation Call
 
-        // Bow draw sound - only when there's an arrow to shoot (no ammo = punch)
         if ((currentAmmo > 0 || totalAmmo > 0) && SoundManager.Instance != null)
         {
             SoundManager.Instance.Play("BowDraw");
@@ -131,8 +130,6 @@ public class ShootHandler : MonoBehaviour
             rb.AddForce(projectile.gameObject.transform.forward * projectileForce * chargeTime, ForceMode.Impulse);
             isCharging = false;
 
-            // Shot sounds are played here, at the moment the arrow spawns, instead of from the
-            // ShootArrow animation state (that clip is ~5s long, so its sounds came late/doubled)
             StartCoroutine(PlayShotSounds());
         }
 
@@ -142,9 +139,9 @@ public class ShootHandler : MonoBehaviour
     {
         if (SoundManager.Instance == null) yield break;
 
-        SoundManager.Instance.Play("BowShoot");      // string twang as the arrow leaves
+        SoundManager.Instance.Play("BowShoot");
         yield return new WaitForSeconds(0.1f);
-        SoundManager.Instance.Play("ArrowFly");      // whoosh just after it's fired
+        SoundManager.Instance.Play("ArrowFly");
     }
 
     public IEnumerator PunchObject()

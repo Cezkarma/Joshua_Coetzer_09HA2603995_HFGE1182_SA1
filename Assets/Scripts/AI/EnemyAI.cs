@@ -27,8 +27,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float areaRadius = 12f;
 
     [Header("FEEDBACK")]
-    [SerializeField] private string alertSound = "EnemyAlert"; // SoundManager name
-    [SerializeField] private float alertCooldown = 6f;         // stops the snarl repeating
+    [SerializeField] private string alertSound = "EnemyAlert";
+    [SerializeField] private float alertCooldown = 6f;
     private float lastAlertTime = -999f;
 
     private Vector3 target;
@@ -80,7 +80,6 @@ public class EnemyAI : MonoBehaviour
         }
         else if (distanceToPlayer <= detectionRange)
         {
-            // Snarl when the bear first spots the player
             if (currentState != EnemyState.Chase && currentState != EnemyState.Attack)
             {
                 PlayAlert();

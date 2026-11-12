@@ -3,6 +3,17 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField] private bool showCursorOnStart = false;
+
+    private void Start()
+    {
+        if (showCursorOnStart)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+    }
+
     public void LoadSelectScene(string sceneToLoad)
     {
         Time.timeScale = 1f;

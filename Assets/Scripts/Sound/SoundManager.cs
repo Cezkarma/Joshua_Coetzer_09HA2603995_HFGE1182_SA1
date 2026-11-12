@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 public class SoundManager : MonoBehaviour
 {
     public Sound[] soundList;
-    public string[] playOnStart; // e.g. "Music", "Ambience" - played when the scene starts
+    public string[] playOnStart;
     public static SoundManager Instance;
 
     private void Awake()
