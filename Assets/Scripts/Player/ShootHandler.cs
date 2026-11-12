@@ -88,14 +88,20 @@ public class ShootHandler : MonoBehaviour
             chargeTime = 0f;
         }
     }
+    private bool IsPaused => UIManager.Instance != null && UIManager.Instance.IsPaused;
+
     private void OnBeginShoot(InputAction.CallbackContext context)
     {
+        if (IsPaused) return;
+
         isCharging = true;
         animationHandler.OnBeginShoot(); //Animation Call
     }
 
     public void OnShoot(InputAction.CallbackContext context)
     {
+        if (IsPaused || !isCharging) return;
+
         if (currentAmmo <= 0 && totalAmmo > 0)
         {
             OnReload(new InputAction.CallbackContext());

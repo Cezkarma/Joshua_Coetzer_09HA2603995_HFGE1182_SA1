@@ -98,8 +98,11 @@ public class PlayerController : MonoBehaviour
         yaw = transform.eulerAngles.y;
     }
 
+    private bool IsPaused => UIManager.Instance != null && UIManager.Instance.IsPaused;
+
     void Update()
     {
+        if (IsPaused) return;
         LookHandler();
     }
 
@@ -152,6 +155,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnJump(InputAction.CallbackContext context)
     {
+        if (IsPaused) return;
+
         if (isGrounded)
         {
             animationHandler.Jump(); //Animation Call
@@ -177,6 +182,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnCrouch(InputAction.CallbackContext context)
     {
+        if (IsPaused) return;
+
         isCrouching = !isCrouching;
         animationHandler.SetIsCrouching(isCrouching); //Animation Call
         Crouch();
